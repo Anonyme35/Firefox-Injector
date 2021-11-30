@@ -1,0 +1,16 @@
+{
+    "name": "XSS Injector",
+    "description": "Inject XSS into editable field",
+    "version": "1",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+        "menus",
+        "activeTab"
+    ],
+    "icons": {
+        "48": "icons/Lightning.png"
+      }
+}
