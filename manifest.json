@@ -1,7 +1,7 @@
 {
     "name": "Injector",
     "description": "Easy inject payload into html field",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "manifest_version": 2,
     "author": "Assidi Rémi",
     "background": {

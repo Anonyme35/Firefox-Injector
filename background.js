@@ -37,10 +37,8 @@ data.then(onGot, onError);
 
 function onGot(item) {
   if (JSON.stringify(item) === '{}'){
-    console.log("got")
     browser.storage.local.set(defaults);
   } else {
-    console.log("in")
     defaults = item
   }
 }
@@ -59,7 +57,6 @@ for (vulnerability of defaults.payloads){
 } 
 
 browser.menus.onClicked.addListener((info, tab) => {
-  console.log(defaults)
   for (vulnerability of defaults.payloads){
     if (vulnerability.id === info.menuItemId){
       if (vulnerability.payload.includes("'")){

