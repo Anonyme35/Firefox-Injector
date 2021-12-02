@@ -15,7 +15,7 @@ var getJSON = function(url, callback) {
 
 function saveOptions(e) {
     e.preventDefault();
-    let link = document.querySelector("link").value
+    let link = document.querySelector("#link").value
     getJSON(link,
     function(err, data) {
       if (err !== null) {
